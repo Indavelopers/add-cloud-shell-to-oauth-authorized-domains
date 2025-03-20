@@ -8,3 +8,4 @@
 - Check Python minimum version compatibility
 - Add logging
 - Add verbosity to logging
+- add <https://direnv.net/> support for <https://cloud.google.com/sdk/docs/configurations>
