@@ -25,25 +25,14 @@ def main():
     print(f'Dry Run: {dry_run}')
     print(f'User Email: {user_email}')
     print(f'Cloud Shell Environment Name: {cloud_shell_env_name}')
+    print('\n----\n')
 
-    import logging
-
-    logging.getLogger("google").propagate = True
-    base_logger = logging.getLogger("google")
-    base_logger.addHandler(logging.StreamHandler())
-    base_logger.setLevel(logging.DEBUG)
-
-    # Create a client
     client = shell_v1.CloudShellServiceClient()
 
-    # Initialize request argument(s)
-    request = shell_v1.GetEnvironmentRequest(name=cloud_shell_env_name)
-
-    # Make the request
+    request = shell_v1.GetEnvironmentRequest(name=f'users/{user_email}/environments/{cloud_shell_env_name}')
     response = client.get_environment(request=request)
 
-    # Handle the response
-    print(response)
+    print(f'Your Cloud Shell {cloud_shell_env_name} environment URL is: {response.web_host}')
 
     if dry_run:
         print('Dry run completed. No changes were made.')

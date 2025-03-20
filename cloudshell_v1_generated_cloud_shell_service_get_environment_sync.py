@@ -8,9 +8,7 @@ def sample_get_environment():
     client = shell_v1.CloudShellServiceClient()
 
     # Initialize request argument(s)
-    request = shell_v1.GetEnvironmentRequest(
-        name="name_value",
-    )
+    request = shell_v1.GetEnvironmentRequest(name="users/me/environments/default")
 
     # Make the request
     response = client.get_environment(request=request)
